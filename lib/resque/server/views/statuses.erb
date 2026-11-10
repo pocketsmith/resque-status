@@ -28,16 +28,16 @@
   <% unless @statuses.empty? %>
     <% @statuses.each do |status| %>
     <tr>
-      <td><a href="<%= u(:statuses) %>/<%= status.uuid %>"><%= status.uuid %></a></td>
-      <td><%= status.name %></td>
-      <td class="status status-<%= status.status %>"><%= status.status %></td>
+      <td><a href="<%= u(:statuses) %>/<%= h status.uuid %>"><%= h status.uuid %></a></td>
+      <td><%= h status.name %></td>
+      <td class="status status-<%= h status.status %>"><%= h status.status %></td>
       <td class="time"><%= status.time.strftime("%Y/%m/%d %H:%M:%S %z") %></td>
       <td class="progress">
         <div class="progress-bar" style="width:<%= status.pct_complete %>%">&nbsp;</div>
         <div class="progress-pct"><%= status.pct_complete ? "#{status.pct_complete}%" : '' %></div>
       </td>
-      <td><%= status.message %></td>
-      <td><% if status.killable? %><a href="<%= u(:statuses) %>/<%= status.uuid %>/kill" class="kill">Kill</a><% end %></td>
+      <td><%= h status.message %></td>
+      <td><% if status.killable? %><a href="<%= u(:statuses) %>/<%= h status.uuid %>/kill" class="kill">Kill</a><% end %></td>
     </tr>
     <% end %>
   <% else %>
